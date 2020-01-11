@@ -22,6 +22,8 @@ module Fastlane
           other_action.pod_push(path: spec_path, 
             repo: params[:repo],
             sources: params[:sources],
+            allow_warnings: params[:allow_warnings],
+            use_libraries: params[:use_libraries],
             verbose: true)
 
           other_action.git_add(path: ".")
@@ -64,6 +66,18 @@ module Fastlane
                                description: "The pod repo to publish",
                                   optional: false,
                                       type: String),
+          FastlaneCore::ConfigItem.new(key: :allow_warnings,
+                                  env_name: "LIB_PUB_YOUR_OPTION",
+                               description: "Allow the pod to have warnings",
+                                  optional: true,
+                             default_value: false,
+                                 is_string: false),
+          FastlaneCore::ConfigItem.new(key: :use_libraries,
+                                  env_name: "LIB_PUB_YOUR_OPTION",
+                               description: "Allow the to use libraries",
+                                  optional: true,
+                             default_value: false,
+                                 is_string: false),
           FastlaneCore::ConfigItem.new(key: :sources,
                                   env_name: "LIB_PUB_YOUR_OPTION",
                                description: "The pod sources",
