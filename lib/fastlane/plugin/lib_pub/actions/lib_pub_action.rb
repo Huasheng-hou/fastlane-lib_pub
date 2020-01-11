@@ -21,7 +21,8 @@ module Fastlane
 
           other_action.pod_push(path: spec_path, 
             repo: params[:repo],
-            sources: params[:sources])
+            sources: params[:sources],
+            verbose: true)
 
           other_action.git_add(path: ".")
           other_action.git_commit(path: ["."], message: "Update podspec")
