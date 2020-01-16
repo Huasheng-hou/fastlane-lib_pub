@@ -9,7 +9,7 @@ module Fastlane
         UI.message "Parameter Version: #{params[:version]}"
 
         version = params[:version]
-        spec_path = params[:spec_path];
+        spec_path = ENV["SPEC_PATH"];
 
         if other_action.git_tag_exists(tag: version)
           UI.message "tag #{version} exists!, Please remove it or use another version number."
@@ -20,7 +20,7 @@ module Fastlane
           other_action.version_bump_podspec(path: spec_path, version_number: version)
 
           other_action.pod_push(path: spec_path, 
-            repo: params[:repo],
+            repo: ENV["REPO"],
             sources: params[:sources],
             allow_warnings: params[:allow_warnings],
             use_libraries: params[:use_libraries],
