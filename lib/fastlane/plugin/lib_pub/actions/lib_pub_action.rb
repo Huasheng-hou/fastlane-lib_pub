@@ -26,8 +26,8 @@ module Fastlane
             use_libraries: params[:use_libraries],
             verbose: true)
 
-          other_action.git_add(path: ".")
-          other_action.git_commit(path: ["."], message: "Update podspec")
+          other_action.git_add(path: "../*")
+          other_action.git_commit(path: [".."], message: "Update podspec")
           other_action.push_to_git_remote
         end
       end
